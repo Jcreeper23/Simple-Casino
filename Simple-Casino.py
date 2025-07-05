@@ -12,11 +12,9 @@ class GameHub(tk.Tk):
         self.create_widgets()
 
     def create_widgets(self):
-        # Title
         title = tk.Label(self, text="🎲 Casino Hub", font=("Arial", 24, "bold"), bg="#2e2e2e", fg="white")
         title.pack(pady=20)
 
-        # Game Buttons
         btn_frame = tk.Frame(self, bg="#2e2e2e")
         btn_frame.pack(pady=20)
 
@@ -33,7 +31,6 @@ class GameHub(tk.Tk):
                             command=command)
             btn.pack(pady=10)
 
-        # Game Area
         self.game_frame = tk.Frame(self, bg="#1e1e1e")
         self.game_frame.pack(expand=True, fill="both", padx=10, pady=10)
 
@@ -45,7 +42,6 @@ class GameHub(tk.Tk):
         for widget in self.game_frame.winfo_children():
             widget.destroy()
 
-    # Dice Roller
     def show_dice_roller(self):
         self.clear_game_frame()
 
@@ -100,7 +96,6 @@ class GameHub(tk.Tk):
                             command=lambda s=sides: roll_dice(s))
             btn.pack(side=tk.LEFT, padx=5, pady=5)
 
-    # Blackjack
     def show_blackjack(self):
         self.clear_game_frame()
         self.blackjack_setup()
@@ -242,7 +237,6 @@ class GameHub(tk.Tk):
         self.dealer_cards_label.config(text=dealer_display)
         self.player_cards_label.config(text=player_display)
 
-    # Casino Mines
     def show_mines(self):
         self.clear_game_frame()
 
@@ -274,7 +268,6 @@ class GameHub(tk.Tk):
                 self.buttons[idx].config(text="💥", bg="red")
                 self.status_label.config(text="Boom! You hit a mine. Game over.", fg="red")
                 self.game_over = True
-                # Reveal all mines
                 for i in self.mines:
                     if i != idx:
                         self.buttons[i].config(text="💣", bg="#aa0000")
@@ -297,13 +290,11 @@ class GameHub(tk.Tk):
                                 command=self.show_mines)
         restart_btn.pack(pady=15)
 
-    # Roulette (placeholder)
     def show_roulette(self):
         self.clear_game_frame()
         label = tk.Label(self.game_frame, text="🎡 Roulette (Coming Soon)", font=("Arial", 20, "bold"), bg="#1e1e1e", fg="white")
         label.pack(pady=20)
 
-    # Coin Flip game
     def show_coin_flip(self):
         self.clear_game_frame()
 
@@ -321,7 +312,6 @@ class GameHub(tk.Tk):
             result_label.config(text="Flipping...")
             self.update()
 
-            # Simple flip animation
             for _ in range(10):
                 self.coin_label.config(text=random.choice(["🪙", "✨", "💫", "🔄"]))
                 self.update()
